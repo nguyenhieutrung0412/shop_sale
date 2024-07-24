@@ -1,5 +1,50 @@
 @extends('admin.masterAdmin')
 @section('content')
+
+{{-- script import editor 5 --}}
+<script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": " {{ asset('assets/vendor/ckeditor5.js') }} "
+           
+        }
+    }
+</script>
+<script type="module">
+    import {
+        ClassicEditor,
+        Essentials,
+        Paragraph,
+        Bold,
+        Italic,
+        Font,
+        Heading,
+       
+        List,
+        
+   
+       
+    } from 'ckeditor5';
+
+    ClassicEditor
+        .create( document.querySelector( '#editor' ), {
+            
+            plugins: [ Essentials, Paragraph, Bold, Italic, Font, Heading ,List ],
+            toolbar: [
+                'undo', 'redo', '|', 'heading', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|','bulletedList', 'numberedList',
+            ],
+            
+        
+        } )
+        .then( editor => {
+            window.editor = editor;
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+{{--  --}}
     <div class="card card-success card-outline mb-4"> <!--begin::Header-->
         <main class="app-main"> <!--begin::App Content Header-->
             <div class="app-content-header"> <!--begin::Container-->
@@ -32,6 +77,7 @@
                             <form action="{{ route('admin.product.add.post') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
+                               
                                 <div class="card card-success card-outline mb-4"> <!--begin::Header-->
                                     <!--begin::Body-->
                                     <div class="card-body">
@@ -57,8 +103,14 @@
                                                 placeholder="500.000" name="price"> </div>
                                         <div class="input-group mb-3"> <span class="input-group-text">Mổ tả sản phẩm:
                                             </span>
-                                            <textarea class="form-control" aria-label="Description" name="description"></textarea>
+                                           
+                                            {{-- <textarea id="editor" class="form-control" aria-label="Description" name="description"></textarea> --}}
                                         </div>
+                                            <textarea id="editor" class="form-control" aria-label="Description" name="description"></textarea>
+
+                                        {{-- <div id="editor">
+                                            <p>Hello from CKEditor 5!</p>
+                                        </div> --}}
                                         <div class="input-group mb-3"> <input type="file" name="files[]" id="file_upload"
                                                 class="form-control" multiple> <label class="input-group-text"
                                                 for="img">Upload</label> </div>
@@ -68,11 +120,13 @@
                                         <button type="cancel" class="btn btn btn-danger">Trở lại</button>
                                     </div> <!--end::Footer-->
                                 </div> <!--end::Input Group-->
+                               
                             </form>
                         </div> <!--end::Col--> <!--begin::Col-->
 
                     </div> <!--end::Row-->
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
+            
         </main>
     @endsection

@@ -57,5 +57,10 @@
                     </div> <!--end::Row-->
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor 4
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor_product_edit' );
+            </script>
         </main>
     @endsection

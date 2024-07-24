@@ -25,7 +25,7 @@ class HomeAdminController extends Controller
         for($i = 0; $i < $count; $i++){
         //Chuyển đổi tiền tệ
         
-        $data[0]['price'] = $this->handleRepo->currency_format($data[0]['price']);
+        $data[$i]['price'] = $this->handleRepo->currency_format($data[$i]['price']);
         }
         //dd($data[0]['price']);die;
         //chuyển đổi tình trạng
