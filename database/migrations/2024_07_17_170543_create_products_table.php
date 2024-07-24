@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('cate_id');
             $table->string('name_product','500')->nullable();
-            $table->text('images','500')->nullable();
+            $table->text('images','1000')->nullable();
             $table->float('price')->nullable();
-            $table->string('description','500')->nullable();
+            $table->string('description','5000')->nullable();
             $table->integer('active');
             $table->timestamps();
         });

@@ -1,6 +1,9 @@
 .product-info{
     width: 100%;
     display: block;
+    float: left;
+    border-bottom: 1px solid #8b8a8a;
+    padding-bottom: 15px;
 }
 /* css container product-info left */
 .product-info .product-info_img{
@@ -39,7 +42,7 @@
     width: 48%;
     float: right;
     margin: 10px 0;
-    
+    line-height: 1.8;
     
 }
 /* css container description */
@@ -47,5 +50,10 @@
     float: left;
     width: 100%;
     padding: 10px 0;
+    line-height: 1.8;
+}
+.product-description .title{
+    font-size: 19px;
+    font-weight: 900;
 }
 

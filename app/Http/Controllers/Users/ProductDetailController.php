@@ -4,11 +4,33 @@ namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repositories\Product\ProductInterface;
+use App\Repositories\Handle\HandleInterface;
+
+
 
 class ProductDetailController extends Controller
 {
-    public function index()
+    protected $productRepo;
+    protected $handleRepo;
+
+    public function __construct(ProductInterface $productRepo, HandleInterface $handleRepo) {
+        $this->productRepo = $productRepo;
+        $this->handleRepo = $handleRepo;
+    }
+
+    public function detail_product($id)
     {
-        return view('users.ProductDetail.detail');
+        //giải hóa id
+        $id = $this->handleRepo->id_decode($id);
+        //
+        $product = $this->productRepo->find($id);
+         //Chuyển đổi tiền tệ
+         $product['price'] = $this->handleRepo->currency_format($product['price']);
+        // xử lí hiển thị hình ảnh từ json về dạng mảng
+        $product['images'] = json_decode($product['images']);
+        
+        
+        return view('users.ProductDetail.detail')->with('product',$product);
     }
 }

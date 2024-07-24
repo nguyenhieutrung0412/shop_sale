@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\LoginAdminController;
 
 //Route users
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/detail',[ProductDetailController::class,'index']);
+Route::get('/detail/{id}',[ProductDetailController::class,'detail_product'])->name('detail');
 
 Route::post('/login',[LoginAdminController::class,'CheckLogin'])->name('login');
 Route::get('/logout',[LoginAdminController::class,'logout'])->name('logout');
