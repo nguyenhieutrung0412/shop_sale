@@ -1,0 +1,190 @@
+/* css header */
+.global-header{
+    width: 100%;
+    border-bottom: 1px solid rgba(204, 204, 204, .5);
+
+
+}
+
+.global-header .header-first
+{
+    width: 100%;
+    height: 32px;
+    background-color: #2a2a2a;
+
+
+}
+.global-header .admin-btn{
+    font-size: 20px;
+    line-height: 15px;
+    position: relative;
+    border: none;
+    padding: 10px;
+    float: right;
+    background: none;
+    color: white;
+    right: 5%;
+    cursor: pointer;
+}
+.global-header .header-first button{
+    position: relative;
+    border: none;
+    padding: 10px;
+    float: right;
+    background: none;
+    color: white;
+    right: 5%;
+
+}
+.global-header .header-second{
+    display: flex;
+    justify-content: center;
+    
+}
+.global-header .header-second .logo,
+.global-footer .footer-first .logo{
+    display: flex;
+    
+}
+.global-header .header-second .logo p
+{
+    padding-right: 10%;
+    font-size: 40px;
+}
+.global-header .header-third{
+
+    width: 100%;
+}
+.global-header .header-third ul{
+    display: flex;
+}
+.global-header .header-third ul li{
+display: flex;
+justify-content: left;
+padding: 0 2% 0 0 ;
+}
+
+/* end css header */
+
+/* css container */
+
+.container .title{
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+.container .list-menu-items{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+}
+.container .list-menu-items .item{
+    display: inline-table;
+    width: 31%;
+    margin-right: 3.5%;
+    margin-bottom: 3.5%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.container .list-menu-items .item.fix{
+    margin-right: 0%;
+}
+.container .list-menu-items .item img{
+    width: 256px;
+    height: 256px;
+
+}
+.container .list-menu-items .item .item-name{
+    padding: var(--padding-text);
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+
+}
+.container .list-menu-items .item .item-description{
+    padding: var(--padding-text);
+    font-size: 14px;
+}
+.container .list-menu-items .item .item-description p{
+    color: #666;
+}
+.container .list-menu-items .item .item-btn{
+    padding: var(--padding-text);
+    display: flex;
+    justify-content: center;
+}
+
+.rainbow-hover {
+   
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff7576;
+    background-color: #2B3044;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    position: relative;
+    line-height: 24px;
+    border-radius: 9px;
+    box-shadow: 0px 1px 2px #2B3044,
+      0px 4px 16px #2B3044;
+    transform-style: preserve-3d;
+    transform: scale(var(--s, 1)) perspective(600px)
+      rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    perspective: 600px;
+    transition: transform 0.1s;
+  }
+  
+  .sp {
+    background: linear-gradient(
+        90deg,
+        #866ee7,
+        #ea60da,
+        #ed8f57,
+        #fbd41d,
+        #2cca91
+      );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    display: block;
+  }
+  
+  .rainbow-hover:active {
+    transition: 0.3s;
+    transform: scale(0.93);
+  }
+  
+/* end css container */
+/* css footer */
+.global-footer{
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+.global-footer .footer-first{
+width: 50%;
+float: left;
+}
+.global-footer .footer-first .logo p{
+    font-size: 20px;
+    padding-right: 2%;
+}
+.global-footer .footer-first .information p{
+    padding: var(--padding-text);
+}
+.global-footer .footer-first .store-active
+{
+    color: #009d11;
+}
+
+
+/* end css footer */
