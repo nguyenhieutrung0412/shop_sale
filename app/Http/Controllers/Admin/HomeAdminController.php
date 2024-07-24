@@ -21,9 +21,12 @@ class HomeAdminController extends Controller
     }
     public function index(){
         $data = $this->productRepo->getProduct();
+        $count = count($data);
+        for($i = 0; $i < $count; $i++){
         //Chuyển đổi tiền tệ
         
         $data[0]['price'] = $this->handleRepo->currency_format($data[0]['price']);
+        }
         //dd($data[0]['price']);die;
         //chuyển đổi tình trạng
         // if($data[0]['active'] == 1)

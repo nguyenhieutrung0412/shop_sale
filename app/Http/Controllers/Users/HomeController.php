@@ -20,19 +20,33 @@ class HomeController extends Controller
     public function index()
     {
         $product = $this->productRepo->getProduct();
+        $count = count($product);
+        $flag = 1;
+        for($i = 0; $i < $count; $i++){
+          
+            // xử lý thêm class fix vào item
+            $product[$i]['fix'] = '';
+            if($flag % 3 == 0 )
+            {
+                $product[$i]['fix'] = 'fix';
+            }
+            // 
+            $product[$i]['id_new'] = $this->handleRepo->id_encode($product[$i]['id']);
+        
+            //chuyển chuỗi thành mảng 
+            $product[$i]['images'] = json_decode($product[$i]['images']);
+            
+             //Chuyển đổi tiền tệ
+             $product[$i]['price'] = $this->handleRepo->currency_format($product[$i]['price']);
+            // Hiển thị mô tả ngắn gọn cho trang sản phẩm
+    
+            $product[$i]['description'] = Str::of($product[$i]['description'])->words(30);
+            $flag++;
+        }
         //mã hóa id
-        $product[0]['id_new'] = $this->handleRepo->id_encode($product[0]['id']);
-        
-        //chuyển chuỗi thành mảng 
-        $product[0]['images'] = json_decode($product[0]['images']);
-        
-         //Chuyển đổi tiền tệ
-         $product[0]['price'] = $this->handleRepo->currency_format($product[0]['price']);
-        // Hiển thị mô tả ngắn gọn cho trang sản phẩm
-
-        $product[0]['description'] = Str::of($product[0]['description'])->words(30);
        
-        
+       
+        // dd($product);
         return view('users.Home.home')->with('data_product',$product);
     }
    

@@ -77,9 +77,11 @@ padding: 0 2% 0 0 ;
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
+    
 }
 .container .list-menu-items .item{
+    position: relative;
     display: inline-table;
     width: 31%;
     margin-right: 3.5%;
@@ -116,6 +118,17 @@ padding: 0 2% 0 0 ;
     padding: var(--padding-text);
     display: flex;
     justify-content: center;
+}
+
+.container .list-menu-items .attention{
+    
+    padding: 20px;
+    background-color: rgb(211, 0, 0);
+    position: absolute;
+    color: #fff;
+    top: 0;
+    right: 0;
+    border-radius:  0 0 0 50%;
 }
 
 .rainbow-hover {
@@ -173,9 +186,11 @@ padding: 0 2% 0 0 ;
 .global-footer .footer-first{
 width: 50%;
 float: left;
+padding-left: 30px;
+line-height: 2.5;
 }
 .global-footer .footer-first .logo p{
-    font-size: 20px;
+    font-size: 26px;
     padding-right: 2%;
 }
 .global-footer .footer-first .information p{
