@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Product\ProductInterface;
 use App\Repositories\Handle\HandleInterface;
-
+use Illuminate\Support\Str;
 
 
 class ProductDetailController extends Controller
@@ -29,7 +29,7 @@ class ProductDetailController extends Controller
          $product['price'] = $this->handleRepo->currency_format($product['price']);
         // xử lí hiển thị hình ảnh từ json về dạng mảng
         $product['images'] = json_decode($product['images']);
-        
+        $product['description'] = Str::of($product['description'])->toHtmlString();
         
         return view('users.ProductDetail.detail')->with('product',$product);
     }

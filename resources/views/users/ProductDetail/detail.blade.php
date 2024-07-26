@@ -24,8 +24,11 @@
             <div class="item-name">
                 <h2>{{$product->name_product}}</h2>
             </div>
+            <div class="item-description_most">
+                <p>{{$product->description_most}}</p>
+            </div>
             <div class="item-price">
-                <h4>{{$product->price}}</h4>
+                <h4>Giá: {{$product->price}}</h4>
             </div>
         </div>
     </div>

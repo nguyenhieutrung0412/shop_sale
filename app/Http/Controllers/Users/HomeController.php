@@ -40,7 +40,7 @@ class HomeController extends Controller
              $product[$i]['price'] = $this->handleRepo->currency_format($product[$i]['price']);
             // Hiển thị mô tả ngắn gọn cho trang sản phẩm
     
-            $product[$i]['description'] = Str::of($product[$i]['description'])->words(30);
+            
             $flag++;
         }
         //mã hóa id

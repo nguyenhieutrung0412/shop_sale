@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Product\ProductInterface;
 use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Handle\HandleInterface;
+use Illuminate\Support\Str;
 
 class HomeAdminController extends Controller
 {
@@ -26,16 +27,12 @@ class HomeAdminController extends Controller
         //Chuyển đổi tiền tệ
         
         $data[$i]['price'] = $this->handleRepo->currency_format($data[$i]['price']);
+        // Chuyển chuỗi thành html
+        $data[$i]['description'] = Str::of($data[$i]['description'])->toHtmlString();
+
+
         }
-        //dd($data[0]['price']);die;
-        //chuyển đổi tình trạng
-        // if($data[0]['active'] == 1)
-        // {
-        //     $data[0]['active'] = 'Còn hàng';
-        // } 
-        // else{
-        //     $data[0]['active'] = 'Hết hàng';
-        // }
+       
         return view('admin.Products.index')->with('product_data',$data);
     }
     public function index_add(){
@@ -43,11 +40,7 @@ class HomeAdminController extends Controller
         return view('admin.Products.addProduct')->with('data',$data);
     }
     public function add_post(Request $request){
-        //Xử lý hình ảnh sủ dụng repository
-        //$file_name = $this->handleRepo->imageHandle($request->files);
-        //dd($file_name);die;
-        // end Xử lý hình ảnh sủ dụng repository
-        //xử lý hình ảnh
+        
         $files = [];
         $files_upload = $request->files;
       
@@ -74,6 +67,7 @@ class HomeAdminController extends Controller
             'cate_id'=>$request->category,
             'name_product'=>$request->name_product,
             'price'=>$request->price,
+            'description_most'=>$request->description_most,
             'description'=>$request->description,
             'active'=>1,
             //xử lý ảnh 
@@ -93,8 +87,27 @@ class HomeAdminController extends Controller
     
     public function index_edit($id){
         $data = $this->productRepo->find($id);
-       // dd($data);die;
-        return view('admin.Product.editProduct')->with('data',$data);
+        $category = $this->categoryRepo->getCategory();
+        //tạo mảng và thêm thành phần cate in product vào mảng
+        $selected_cate = [];
+        for($i = 0; $i < count($category); $i++){
+            if($data['cate_id'] == $category[$i]['id']){
+                $selected_cate['selected_id'] = $category[$i]['id']; 
+                $selected_cate['selected_name'] = $category[$i]['name']; 
+                //xóa thành phần đã chọn trong product ở mảng category
+                unset($category[$i]);
+            }
+
+        }
+        //end
+        $data['images'] = json_decode($data['images']);
+        
+       
+        return view('admin.Products.editProduct')
+        ->with('data',$data)
+        ->with('category',$category)
+        ->with('selected_cate',$selected_cate);
+
     }
     public function edit_post(Request $request){
         // $id = $request->id;

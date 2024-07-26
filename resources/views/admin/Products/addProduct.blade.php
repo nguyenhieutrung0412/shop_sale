@@ -101,6 +101,10 @@
                                         <div class="input-group mb-3"> <span class="input-group-text" id="price">Giá sản
                                                 phẩm: </span> <input type="text" class="form-control"
                                                 placeholder="500.000" name="price"> </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Mổ tả nổi bật:</span>
+                                            <textarea  class="form-control" aria-label="Description" name="description_most"></textarea>
+                                        </div>
                                         <div class="input-group mb-3"> <span class="input-group-text">Mổ tả sản phẩm:
                                             </span>
                                            
@@ -111,9 +115,14 @@
                                         {{-- <div id="editor">
                                             <p>Hello from CKEditor 5!</p>
                                         </div> --}}
-                                        <div class="input-group mb-3"> <input type="file" name="files[]" id="file_upload"
+                                        <br>
+                                        <div class="input-group mb-3"> 
+                                            <span class="input-group-text">Hình ảnh 512x512:</span>
+                                            <input type="file" name="files[]" id="file_upload"
                                                 class="form-control" multiple> <label class="input-group-text"
-                                                for="img">Upload</label> </div>
+                                                for="img">Upload</label> 
+                                        </div>
+                                       
                                     </div> <!--end::Body--> <!--begin::Footer-->
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-success">Thêm</button>

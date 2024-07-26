@@ -39,6 +39,7 @@
                                     <th style="width: 100px">Ảnh</th>
                                     <th style="">Phân loại</th>
                                     <th style="">Tên</th>
+                                    <th>Mô tả nổi bật</th>
                                     <th>Mô tả</th>
                                     <th>Giá bán</th>
                                     <th style="width: 90px">Tình trạng</th>
@@ -61,6 +62,7 @@
                                     <td ><img class="img-fluid img-thumbnail" src="{{ asset('upload/images/'.$img[0]) }}" alt="Ảnh sản phẩm"> </td>
                                     <td>{{$value->category->name}}</td>
                                     <td>{{$value->name_product}}</td>
+                                    <td>{{$value->description_most}}</td>
                                     <td>{{$value->description}}</td>
                                     <td>{{$value->price}}</td>
                                     @if ($value->active === 1)

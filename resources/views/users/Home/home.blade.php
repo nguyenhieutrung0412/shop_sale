@@ -16,7 +16,7 @@
                     <h4>{{$value->name_product}}</h4>
                 </div>
                 <div class="item-description">
-                    <p>{{$value->description}}</p>
+                    <p>{{$value->description_most}}</p>
                 </div>
                 <div class="item-price">
                     <h4>{{$value->price}}</h4>
@@ -39,7 +39,7 @@
                     <h4>{{$value->name_product}}</h4>
                 </div>
                 <div class="item-description">
-                    <p>{{$value->description}}</p>
+                    <p>{{$value->description_most}}</p>
                 </div>
                 <div class="item-price">
                     <h4>{{$value->price}}</h4>
