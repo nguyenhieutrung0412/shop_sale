@@ -124,15 +124,20 @@
                                                 class="form-control" multiple> <label class="input-group-text"
                                                 for="img">Upload</label> </div>
                                     </div>
-                                   
+                                    <div class="display_img">
                                     @foreach ($data->images as $key => $item)
-                                        
+                                    <div class="img_item">
                                         <img src="{{ asset('upload/images/'.$item) }}" class="img-fluid" alt="...">
+                                        <div class="delete_img">
+                                            <i class="bi bi-x-lg"></i>
+                                        </div>
+                                    </div>
+
                                     @endforeach
-                                    
+                                </div>
                                      <!--end::Body--> <!--begin::Footer-->
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-success">Thêm</button>
+                                        <button type="submit" class="btn btn-success">Sửa đổi</button>
                                         <button type="cancel" class="btn btn btn-danger">Trở lại</button>
                                     </div> <!--end::Footer-->
                                 </div> <!--end::Input Group-->

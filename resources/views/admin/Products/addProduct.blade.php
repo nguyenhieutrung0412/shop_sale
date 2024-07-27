@@ -120,9 +120,17 @@
                                             <span class="input-group-text">Hình ảnh 512x512:</span>
                                             <input type="file" name="files[]" id="file_upload"
                                                 class="form-control" multiple> <label class="input-group-text"
-                                                for="img">Upload</label> 
+                                                for="img"
+                                             
+                                                >Upload</label> 
+                                        </div>
+                                        <div class="display_img" >
+                                          
+                                         
+                                           
                                         </div>
                                        
+
                                     </div> <!--end::Body--> <!--begin::Footer-->
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-success">Thêm</button>

@@ -86,12 +86,12 @@
                                     <td>{{$value->created_at}}</td>
                                     
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="{{ route('admin.product.edit', ['id'=>$value->id]) }}">
+                                        <a class="btn btn-info btn-sm" href="{{ route('admin.product.edit', ['id'=>$value->id_new]) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="{{ route('admin.product.delete', ['id'=>$value->id]) }}">
+                                        <a class="btn btn-danger btn-sm" href="{{ route('admin.product.delete', ['id'=>$value->id_new]) }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete

@@ -25,7 +25,7 @@ class HomeAdminController extends Controller
         $count = count($data);
         for($i = 0; $i < $count; $i++){
         //Chuyển đổi tiền tệ
-        
+        $data[$i]['id_new'] = $this->handleRepo->id_encode($data[$i]['id']);
         $data[$i]['price'] = $this->handleRepo->currency_format($data[$i]['price']);
         // Chuyển chuỗi thành html
         $data[$i]['description'] = Str::of($data[$i]['description'])->toHtmlString();
@@ -86,6 +86,8 @@ class HomeAdminController extends Controller
     }
     
     public function index_edit($id){
+          //giải hóa id
+          $id = $this->handleRepo->id_decode($id);
         $data = $this->productRepo->find($id);
         $category = $this->categoryRepo->getCategory();
         //tạo mảng và thêm thành phần cate in product vào mảng
@@ -128,6 +130,8 @@ class HomeAdminController extends Controller
         // }
     }
     public function delete($id){
+          //giải hóa id
+        $id = $this->handleRepo->id_decode($id);
         // $id = $request->id;
         $data = $this->productRepo->delete($id);
         

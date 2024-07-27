@@ -1,3 +1,8 @@
+
+:root{
+    --img-width-height:256px;
+    --img-width-height-list-thumbnail:128px;
+}
 /* admin custom */
 
 .switch {
@@ -50,4 +55,27 @@
    
    input:checked + .slider:before {
     transform: translateX(1.5em);
+   }
+   /*  */
+   .display_img{
+   display: flex;
+   justify-content: left;
+   width: 100%;
+   flex-wrap: wrap;
+    
+   }
+   .img_item{
+    position: relative;
+   }
+   .delete_img{
+    
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 20px;
+   }
+   .display_img img{
+    width: var(--img-width-height);
+    border: 1px solid #b3b2b2;
+    margin: 10px;
    }
