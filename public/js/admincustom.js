@@ -10,10 +10,31 @@
         {
             upLoadImage(files_data[i]);
         }
-      
-       
       });
-    
+      $(".btn_event").on("click",(e)=>{
+            delete_item(e);    
+      })
+    //   Xử lý xóa item hiện thông báo 
+      function delete_item(e){
+        
+            data = e.target.dataset;
+            const confirm =  window.confirm("Bạn có muốn xóa không");
+            if(confirm == true)
+            {
+                $.ajax({
+                    method: "POST",
+                    url: data.route,
+                    data: { id: data.id },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                   },
+                }).done(()=>{
+                    location.reload();
+                })
+            } 
+            
+            
+      }
       function upLoadImage(file_data){
       
         //var type = file_data[0].type;

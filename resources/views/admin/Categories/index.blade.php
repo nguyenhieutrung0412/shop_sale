@@ -56,7 +56,7 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="{{ route('admin.categories.delete', ['id'=>$data->id]) }}">
+                                        <a class="btn btn-danger btn-sm btn_event" data-id="{{$data->id_new}}" data-route="{{ route('admin.categories.delete') }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete

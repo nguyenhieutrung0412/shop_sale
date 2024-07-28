@@ -6,18 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
 use App\Models\Categories;
+use App\Repositories\Handle\HandleInterface;
 use App\Repositories\Category\CategoryInterface;
 
 class CategoriesAdminController extends Controller
 {
     protected $categoryRepo;
+    protected $handleRepo;
 
-    public function __construct(CategoryInterface $categoryRepo){
+    public function __construct(CategoryInterface $categoryRepo, HandleInterface $handleRepo){
         $this->categoryRepo = $categoryRepo;
+        $this->handleRepo = $handleRepo;
     }
 
      public function index(){
         $data =  $this->categoryRepo->getCategory();
+        $count = count($data);
+        for($i = 0; $i < $count; $i++){
+            $data[$i]['id_new'] = $this->handleRepo->id_encode($data[$i]['id']);
+        }
         return view('admin.Categories.index')->with('data',$data);
     }
     public function index_add(){
@@ -63,8 +70,11 @@ class CategoriesAdminController extends Controller
             return redirect()->route('admin.categories.edit')->with('error','Sửa đổi thất bại.');
         }
     }
-    public function delete($id){
+    public function delete(Request $request){
         // $id = $request->id;
+           //giải hóa id
+         
+        $id = $this->handleRepo->id_decode($request->id);
         $data = $this->categoryRepo->delete($id);
         
         if($data){

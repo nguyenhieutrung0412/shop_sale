@@ -24,8 +24,10 @@ class HomeAdminController extends Controller
         $data = $this->productRepo->getProduct();
         $count = count($data);
         for($i = 0; $i < $count; $i++){
+        //Mã hóa id
+        $data[$i]['id_new'] = $this->handleRepo->id_encode($data[$i]['id']); 
         //Chuyển đổi tiền tệ
-        $data[$i]['id_new'] = $this->handleRepo->id_encode($data[$i]['id']);
+      
         $data[$i]['price'] = $this->handleRepo->currency_format($data[$i]['price']);
         // Chuyển chuỗi thành html
         $data[$i]['description'] = Str::of($data[$i]['description'])->toHtmlString();
@@ -129,11 +131,14 @@ class HomeAdminController extends Controller
         //     return redirect()->route('admin.categories.edit')->with('error','Sửa đổi thất bại.');
         // }
     }
-    public function delete($id){
+    public function delete(Request $request){
           //giải hóa id
-        $id = $this->handleRepo->id_decode($id);
-        // $id = $request->id;
+         
+        $id = $this->handleRepo->id_decode($request->id);
+       
+        
         $data = $this->productRepo->delete($id);
+     
         
         if($data){
             return redirect()->route('admin.product')->with('success','Xóa thành công.');

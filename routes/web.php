@@ -34,14 +34,14 @@ Route::prefix('dashboard')->middleware('admin')->group(function(){
     Route::post('/product/add',[HomeAdminController::class,'add_post'])->name("admin.product.add.post");
     Route::get('/product/edit/{id}',[HomeAdminController::class,'index_edit'])->name("admin.product.edit");
     Route::post('/product/edit',[HomeAdminController::class,'edit_post'])->name("admin.product.edit.post");
-    Route::get('/product/delete/{id}',[HomeAdminController::class,'delete'])->name("admin.product.delete");
+    Route::post('/product/delete',[HomeAdminController::class,'delete'])->name("admin.product.delete");
     // category
     Route::get('/categories',[CategoriesAdminController::class,'index'])->name("admin.categories");
     Route::get('/categories/add',[CategoriesAdminController::class,'index_add'])->name("admin.categories.add");
     Route::post('/categories/add',[CategoriesAdminController::class,'add_post'])->name("admin.categories.add.post");
     Route::get('/categories/edit/{id}',[CategoriesAdminController::class,'index_edit'])->name("admin.categories.edit");
     Route::post('/categories/edit',[CategoriesAdminController::class,'edit_post'])->name("admin.categories.edit.post");
-    Route::get('/categories/delete/{id}',[CategoriesAdminController::class,'delete'])->name("admin.categories.delete");
+    Route::post('/categories/delete',[CategoriesAdminController::class,'delete'])->name("admin.categories.delete");
 });
 
 

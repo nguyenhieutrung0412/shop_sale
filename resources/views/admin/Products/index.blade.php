@@ -91,7 +91,7 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="{{ route('admin.product.delete', ['id'=>$value->id_new]) }}">
+                                        <a class="btn btn-danger btn-sm btn_event"  data-id="{{$value->id_new}}" data-route="{{ route('admin.product.delete') }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
