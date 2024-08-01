@@ -50,16 +50,16 @@
                             <tbody>
                                 @foreach ($product_data as $value)
                                 <tr class="align-middle">
-                                    <td>{{$value->id}}</td>
+                                    <td>{{$value->stt}}</td>
                                     {{-- Xử lý hiển thị hình ảnh(1 ảnh đầu) --}}
                                    
-                                    <?php
-                                    $img =  json_decode($value->images);
-                           
-                                    ?>
                                     
                                     {{--  --}}
-                                    <td ><img class="img-fluid img-thumbnail" src="{{ asset('upload/images/'.$img[0]) }}" alt="Ảnh sản phẩm"> </td>
+                                    <td >
+                                     @if (count($value->images) !== 0 )
+                                    <img class="img-fluid img-thumbnail" src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Ảnh sản phẩm"> 
+                                    @endif
+                                    </td>
                                     <td>{{$value->category->name}}</td>
                                     <td>{{$value->name_product}}</td>
                                     <td>{{$value->description_most}}</td>

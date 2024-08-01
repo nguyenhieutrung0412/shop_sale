@@ -24,10 +24,16 @@ class HomeAdminController extends Controller
         $data = $this->productRepo->getProduct();
         $count = count($data);
         for($i = 0; $i < $count; $i++){
+        //số thứ tự hiển thị
+        $data[$i]['stt'] = $i + 1;
+        //
+
         //Mã hóa id
         $data[$i]['id_new'] = $this->handleRepo->id_encode($data[$i]['id']); 
         //Chuyển đổi tiền tệ
-      
+        //lấy danh sách hình ảnh
+        $data[$i]['images'] = json_decode($data[$i]['images']);; 
+        // 
         $data[$i]['price'] = $this->handleRepo->currency_format($data[$i]['price']);
         // Chuyển chuỗi thành html
         $data[$i]['description'] = Str::of($data[$i]['description'])->toHtmlString();
@@ -105,6 +111,7 @@ class HomeAdminController extends Controller
         }
         //end
         $data['images'] = json_decode($data['images']);
+        $data['newid'] = $this->handleRepo->id_encode($id);
         
        
         return view('admin.Products.editProduct')
@@ -114,6 +121,7 @@ class HomeAdminController extends Controller
 
     }
     public function edit_post(Request $request){
+        dd($request->all());
         // $id = $request->id;
         // // $data = $this->categoryRepo->find($id);
         

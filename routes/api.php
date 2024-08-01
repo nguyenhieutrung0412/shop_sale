@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\HomeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 // Route::post('/login',[LoginAdminController::class,'CheckLogin'])->name('login');
+// admin
+Route::prefix('dashboard')->group(function(){
+    Route::post('/product/delete-image',[HomeController::class,'delete_image'])->name("admin.delete.image");
+});

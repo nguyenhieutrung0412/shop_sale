@@ -173,7 +173,19 @@ padding: 0 2% 0 0 ;
     transition: 0.3s;
     transform: scale(0.93);
   }
+  .item-image:hover img{
+    animation: hover_img 0.5s forwards  ;
+  }
+  @keyframes hover_img {
+    0%{
+        transform: scale(1,1);
+    }
+    100%{
+        transform: scale(1.1,1.1);
+    }
+  }
   
+
 /* end css container */
 /* css footer */
 .global-footer{

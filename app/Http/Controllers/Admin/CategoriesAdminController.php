@@ -23,6 +23,9 @@ class CategoriesAdminController extends Controller
         $data =  $this->categoryRepo->getCategory();
         $count = count($data);
         for($i = 0; $i < $count; $i++){
+            //số thứ tự hiển thị
+            $data[$i]['stt'] = $i + 1;
+            //
             $data[$i]['id_new'] = $this->handleRepo->id_encode($data[$i]['id']);
         }
         return view('admin.Categories.index')->with('data',$data);

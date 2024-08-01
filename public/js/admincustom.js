@@ -14,9 +14,12 @@
       $(".btn_event").on("click",(e)=>{
             delete_item(e);    
       })
+      $(".delete_img").on("click",(e)=>{
+            deleteImage(e); 
+      })
     //   Xử lý xóa item hiện thông báo 
       function delete_item(e){
-        
+            console.log(e);
             data = e.target.dataset;
             const confirm =  window.confirm("Bạn có muốn xóa không");
             if(confirm == true)
@@ -24,7 +27,10 @@
                 $.ajax({
                     method: "POST",
                     url: data.route,
-                    data: { id: data.id },
+                    data: { 
+                        id: data.id,
+                        data:data
+                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                    },
@@ -57,6 +63,31 @@
             }
             fileRender.readAsDataURL(file_loading);
         
+    }
+    // Xóa ảnh 
+    function deleteImage(e){
+       
+        data = e.target.parentElement.dataset;
+        //console.log(data.route);
+        const confirm =  window.confirm("Bạn có muốn xóa không");
+        if(confirm == true)
+        {
+            $.ajax({
+                method: "POST",
+                url: data.route,
+                data: { 
+                    id: data.id,
+                    data:data
+                 },
+                cache: true,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               },
+            }).done((str)=>{
+                console.log(str)
+                //if(str.status)
+            })
+        }
     }
 })( jQuery )
 

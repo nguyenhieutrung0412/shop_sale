@@ -74,7 +74,7 @@
                         </div> <!--end::Col--> <!--begin::Col-->
                         <div class="col-md-12"> <!--begin::Quick Example-->
                             <!--begin::Input Group-->
-                            <form action="{{ route('admin.product.add.post') }}" method="post"
+                            <form action="{{ route('admin.product.edit.post') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                
@@ -124,12 +124,12 @@
                                                 class="form-control" multiple> <label class="input-group-text"
                                                 for="img">Upload</label> </div>
                                     </div>
-
+                                    <input type="hidden" name="id" value="{{$data->newid}}">
                                     <ul class="display_img">
                                     @foreach ($data->images as $key => $item)
                                         <li class="img_item" id="img_{{$item}}">
                                             <img src="{{ asset('upload/images/'.$item) }}" class="img-fluid" alt="...">
-                                            <div class="delete_img">
+                                            <div class="delete_img " data-id="{{$data->newid}}" data-route="{{ route('admin.delete.image') }}" data-name="{{$item}}">
                                                 <i class="bi bi-x-lg"></i>
                                             </div>
                                         </li>

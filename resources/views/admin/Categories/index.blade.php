@@ -48,7 +48,7 @@
                             <tbody>
                                 @foreach ($data as $data)
                                 <tr class="align-middle">
-                                    <td>{{$data->id}}</td>
+                                    <td>{{$data->stt}}</td>
                                     <td>{{$data->name}}</td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('admin.categories.edit', ['id'=>$data->id]) }}">
