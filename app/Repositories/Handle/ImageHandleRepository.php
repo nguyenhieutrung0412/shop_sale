@@ -129,11 +129,17 @@ class ImageHandleRepository extends BaseRepository implements HandleInterface
     //hàm băm id mã hóa
     public function id_decode($id) {
         $arr = explode('_', $id);
-        $id = $arr[1];
-        $id_new_decode = base64_decode($id);
+        //dd($arr);
+        if(count($arr) > 0) {
+            $id = $arr[1];
+            $id_new_decode = base64_decode($id);
+        }
+      
         return $id_new_decode;
 
     }
+
+    //
     
     
 }

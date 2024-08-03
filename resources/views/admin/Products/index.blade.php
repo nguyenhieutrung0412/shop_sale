@@ -57,7 +57,7 @@
                                     {{--  --}}
                                     <td >
                                      @if (count($value->images) !== 0 )
-                                    <img class="img-fluid img-thumbnail" src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Ảnh sản phẩm"> 
+                                        <img class="img-fluid img-thumbnail" src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Ảnh sản phẩm"> 
                                     @endif
                                     </td>
                                     <td>{{$value->category->name}}</td>
@@ -69,7 +69,7 @@
                                     <td style="color: #11d922;text-align: center">
                                         
                                         <label class="switch">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" class="active_checkbox" data-route="{{ route('admin.update.active') }}" data-flag="true" data-id="{{$value->id_new}}" checked>
                                         <span class="slider"></span>
                                       </label></td>
                                     
@@ -77,7 +77,7 @@
                                     <td style="color: #e81526;text-align: center">
                                         
                                         <label class="switch">
-                                            <input type="checkbox">
+                                            <input type="checkbox"  class="active_checkbox" data-route="{{ route('admin.update.active') }}" data-flag="false" data-id="{{$value->id_new}}">
                                             <span class="slider"></span>
                                           </label>
                                     </td>

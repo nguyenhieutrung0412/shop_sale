@@ -127,9 +127,12 @@
                                     <input type="hidden" name="id" value="{{$data->newid}}">
                                     <ul class="display_img">
                                     @foreach ($data->images as $key => $item)
-                                        <li class="img_item" id="img_{{$item}}">
+                                        <?php $id_item = explode('.',$item) ?>
+                                        <li class="img_item img_{{$id_item[0]}}" id="img_{{$id_item[0]}}">
                                             <img src="{{ asset('upload/images/'.$item) }}" class="img-fluid" alt="...">
-                                            <div class="delete_img " data-id="{{$data->newid}}" data-route="{{ route('admin.delete.image') }}" data-name="{{$item}}">
+                                            <input type="hidden" name="images_uploaded[]" value="{{$item}}">
+
+                                            <div class="delete_img " data-id="{{$data->newid}}"  data-name="img_{{$id_item[0]}}">
                                                 <i class="bi bi-x-lg"></i>
                                             </div>
                                         </li>

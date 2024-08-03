@@ -173,6 +173,11 @@ padding: 0 2% 0 0 ;
     transition: 0.3s;
     transform: scale(0.93);
   }
+  .container .item-image
+  {
+    display: flex;
+    justify-content: center;
+  }
   .item-image:hover img{
     animation: hover_img 0.5s forwards  ;
   }

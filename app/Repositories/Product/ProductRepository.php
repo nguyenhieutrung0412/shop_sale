@@ -47,5 +47,5 @@ class ProductRepository extends BaseRepository implements ProductInterface
 
             return false;
      }
-    
+        
 }

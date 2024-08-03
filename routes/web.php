@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\users\HomeController;
+use App\Http\Controllers\Api\HomeController as ApiHome;
 use App\Http\Controllers\users\ProductDetailController;
 use App\Http\Controllers\users\LoginController;
 use App\Http\Controllers\Admin\HomeAdminController;
@@ -35,6 +36,10 @@ Route::prefix('dashboard')->middleware('admin')->group(function(){
     Route::get('/product/edit/{id}',[HomeAdminController::class,'index_edit'])->name("admin.product.edit");
     Route::post('/product/edit',[HomeAdminController::class,'edit_post'])->name("admin.product.edit.post");
     Route::post('/product/delete',[HomeAdminController::class,'delete'])->name("admin.product.delete");
+    //xóa ảnh trong product
+    //Route::post('/product/delete-image',[ApiHome::class,'delete_image'])->name("admin.delete.image");
+    Route::post('/product/update-active',[ApiHome::class,'update_active'])->name("admin.update.active");
+    
     // category
     Route::get('/categories',[CategoriesAdminController::class,'index'])->name("admin.categories");
     Route::get('/categories/add',[CategoriesAdminController::class,'index_add'])->name("admin.categories.add");

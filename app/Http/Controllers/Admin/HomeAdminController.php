@@ -94,10 +94,11 @@ class HomeAdminController extends Controller
     }
     
     public function index_edit($id){
-          //giải hóa id
-          $id = $this->handleRepo->id_decode($id);
+        //giải hóa id
+        $id = $this->handleRepo->id_decode($id);
         $data = $this->productRepo->find($id);
         $category = $this->categoryRepo->getCategory();
+        
         //tạo mảng và thêm thành phần cate in product vào mảng
         $selected_cate = [];
         for($i = 0; $i < count($category); $i++){
@@ -110,8 +111,10 @@ class HomeAdminController extends Controller
 
         }
         //end
-        $data['images'] = json_decode($data['images']);
+        $data['images'] = json_decode($data['images']); 
+        
         $data['newid'] = $this->handleRepo->id_encode($id);
+       
         
        
         return view('admin.Products.editProduct')
@@ -121,23 +124,58 @@ class HomeAdminController extends Controller
 
     }
     public function edit_post(Request $request){
-        dd($request->all());
-        // $id = $request->id;
-        // // $data = $this->categoryRepo->find($id);
+        //dd($request->all());
+        $id = $this->handleRepo->id_decode($request->id);
+        $data = $this->productRepo->find($id);
+       //lấy file upload
+        $files = [];
+        $files_upload = $request->files;
+      
+        if($request->hasfile('files'))
+		{
+
+			foreach($request->file('files') as $file)
+			{  
+               
+                $original_filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $fileName =$this->handleRepo->urlNormal($original_filename);
+			    $name = time().$fileName.'-'.rand(1,100).'.'.$file->getClientOriginalExtension();
+                
+			    $file->move(public_path('upload/images'), $name);  
+			    $files[] = $name;  
+			}
+		}
+        if($request->images_uploaded === null)
+        {
+            $request->images_uploaded = [];
+        };
+        $files_merge = array_merge($files,$request->images_uploaded);
         
-        // //  dd($request->name);die;
-        // $attributes = [
-        //     'name'=>$request->name
-        // ];
-        // $update = $this->categoryRepo->update($id,$attributes);
+        //chuyển đổi array to json
+        $json_files = json_encode($files_merge);
         
+
+        
+        //  dd($request->name);die;
+        $attributes = [
+            'id' => $id,
+            'cate_id' => $request->category,
+            'name_product' => $request->name_product,
+            'description_most' => $request->description_most,
+            'description' => $request->description,
+            'price' => $request->price,
+            'images' => $json_files
+        ];
+      
+        $update = $this->productRepo->update($id,$attributes);
+        // dd($this->handleRepo->id_decode($request->id));die;
          
-        // if($update){
-        //     return redirect()->route('admin.categories.edit',['id'=>$id])->with('success','Sửa đổi thành công.');
-        // }
-        // else{
-        //     return redirect()->route('admin.categories.edit')->with('error','Sửa đổi thất bại.');
-        // }
+        if($update){
+            return redirect()->route('admin.product')->with('success','Sửa đổi thành công.');
+        }
+        else{
+            return redirect()->route('admin.product')->with('error','Sửa đổi thất bại.');
+        }
     }
     public function delete(Request $request){
           //giải hóa id
