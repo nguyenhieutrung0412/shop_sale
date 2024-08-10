@@ -13,20 +13,23 @@
         
         <div class="header-second container-gobal">
             <div class="logo">
-                <p>F</p>
+                <p>A</p>
+                <p>L</p>
                 <p>O</p>
-                <p>R</p>
                 <p>E</p>
                 <p>V</p>
                 <p>E</p>
                 <p>R</p>
+                <p>A</p>
+                <p>V</p>
+                <p>E</p>
             </div>
         </div>
         <div class="header-third container-gobal">
             <ul>
-                <li><a href="">Trang chủ</a></li>
-                <li><a href="">Sản phẩm</a></li>
-                <li><a href="">Liên hệ</a></li>   
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/">Sản phẩm</a></li>
+                <li><a href="/">Liên hệ</a></li>   
             </ul>
         </div>
     </div>

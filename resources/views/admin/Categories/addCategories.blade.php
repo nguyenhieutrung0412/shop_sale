@@ -46,7 +46,7 @@
                                     </div> <!--end::Body--> <!--begin::Footer-->
                                     <div class="card-footer">
                                         <button  class="btn btn-success">Thêm</button>
-                                        <button  class="btn btn btn-danger">Trở lại</button>
+                                        <button onclick="history.back()" class="btn btn btn-danger">Trở lại</button>
                                     </div> <!--end::Footer-->
                                 </div> <!--end::Input Group-->
                             </form>

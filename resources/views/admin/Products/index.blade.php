@@ -50,7 +50,7 @@
                             <tbody>
                                 @foreach ($product_data as $value)
                                 <tr class="align-middle">
-                                    <td>{{$value->stt}}</td>
+                                    <td data-label ="Số Thứ Tự">{{$value->stt}}</td>
                                     {{-- Xử lý hiển thị hình ảnh(1 ảnh đầu) --}}
                                    
                                     
@@ -60,13 +60,13 @@
                                         <img class="img-fluid img-thumbnail" src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Ảnh sản phẩm"> 
                                     @endif
                                     </td>
-                                    <td>{{$value->category->name}}</td>
-                                    <td>{{$value->name_product}}</td>
-                                    <td>{{$value->description_most}}</td>
-                                    <td>{{$value->description}}</td>
-                                    <td>{{$value->price}}</td>
+                                    <td data-label ="Loại sản phẩm">{{$value->category->name}}</td>
+                                    <td >{{$value->name_product}}</td>
+                                    <td >{{$value->description_most}}</td>
+                                    <td >{{$value->description}}</td>
+                                    <td data-label ="Giá sản phẩm">{{$value->price}}</td>
                                     @if ($value->active === 1)
-                                    <td style="color: #11d922;text-align: center">
+                                    <td data-label ="Tình trạng sản phẩm" style="color: #11d922;text-align: center">
                                         
                                         <label class="switch">
                                         <input type="checkbox" class="active_checkbox" data-route="{{ route('admin.update.active') }}" data-flag="true" data-id="{{$value->id_new}}" checked>
@@ -74,7 +74,7 @@
                                       </label></td>
                                     
                                     @else
-                                    <td style="color: #e81526;text-align: center">
+                                    <td data-label ="Tình trạng sản phẩm" style="color: #e81526;text-align: center">
                                         
                                         <label class="switch">
                                             <input type="checkbox"  class="active_checkbox" data-route="{{ route('admin.update.active') }}" data-flag="false" data-id="{{$value->id_new}}">
@@ -83,18 +83,18 @@
                                     </td>
                                     
                                     @endif
-                                    <td>{{$value->created_at}}</td>
+                                    <td data-label ="Ngày thêm sản phẩm">{{$value->created_at}}</td>
                                     
-                                    <td class="project-actions text-right">
+                                    <td data-label ="Hành động" class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('admin.product.edit', ['id'=>$value->id_new]) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
-                                            Edit
+                                            Chỉnh sửa
                                         </a>
                                         <a class="btn btn-danger btn-sm btn_event"  data-id="{{$value->id_new}}" data-route="{{ route('admin.product.delete') }}">
                                             <i class="fas fa-trash">
                                             </i>
-                                            Delete
+                                            Xóa
                                         </a>
                                     </td>
                                   

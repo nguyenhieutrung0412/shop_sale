@@ -45,7 +45,7 @@ img{
 }
 .container{
     width: 100%;
-   display: block;
+   display: inline-block;
 }
 .p-relative{
     position: relative;

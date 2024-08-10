@@ -22,7 +22,12 @@
         
         <div class="product-info_iteminfo">
             <div class="item-name">
-                <h2>{{$product->name_product}}</h2>
+                @if($product->active === 0)
+                    <h4>{{$product->name_product}} <span style="color: red">(Đang đợi nhập hàng...)</span></h4>
+                @else
+                <h2>{{$product->name_product}} </h2>
+                @endif
+                
             </div>
             <div class="item-description_most">
                 <p>{{$product->description_most}}</p>

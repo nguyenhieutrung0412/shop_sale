@@ -25,7 +25,7 @@
         </div>
         <div class="footer-second">
 
-            <h3>Copyright © 2024 domain.com. All Rights Reserved.</h3>
+            <h3>Copyright © 2024 aloeveravn.com. All Rights Reserved.</h3>
         </div>
     </div>
 </footer>

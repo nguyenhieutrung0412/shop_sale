@@ -32,6 +32,7 @@
                     </div>
                 </div>
             </a>
+            
             @else
             <a href="{{ route('detail', ['id'=>$value->id_new]) }}">
                 <div class="item {{$value->fix}}">

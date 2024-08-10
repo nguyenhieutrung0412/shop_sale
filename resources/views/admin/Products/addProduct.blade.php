@@ -119,22 +119,16 @@
                                         <div class="input-group mb-3"> 
                                             <span class="input-group-text">Hình ảnh 512x512:</span>
                                             <input type="file" name="files[]" id="file_upload"
-                                                class="form-control" multiple> <label class="input-group-text"
-                                                for="img"
-                                             
-                                                >Upload</label> 
+                                                class="form-control" multiple>
                                         </div>
                                         <div class="display_img" >
-                                          
-                                         
-                                           
                                         </div>
                                        
 
                                     </div> <!--end::Body--> <!--begin::Footer-->
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-success">Thêm</button>
-                                        <button type="cancel" class="btn btn btn-danger">Trở lại</button>
+                                        <button type="cancel" onclick="history.back()" class="btn btn btn-danger">Trở lại</button>
                                     </div> <!--end::Footer-->
                                 </div> <!--end::Input Group-->
                                

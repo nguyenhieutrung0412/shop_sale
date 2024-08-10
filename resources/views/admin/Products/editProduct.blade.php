@@ -121,8 +121,7 @@
                                         <div class="input-group mb-3"> 
                                             <span class="input-group-text">Hình ảnh 512x512:</span>
                                             <input type="file" name="files[]" id="file_upload"
-                                                class="form-control" multiple> <label class="input-group-text"
-                                                for="img">Upload</label> </div>
+                                                class="form-control" multiple>  </div>
                                     </div>
                                     <input type="hidden" name="id" value="{{$data->newid}}">
                                     <ul class="display_img">
@@ -141,7 +140,7 @@
                                      <!--end::Body--> <!--begin::Footer-->
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-success">Sửa đổi</button>
-                                        <button type="cancel" class="btn btn btn-danger">Trở lại</button>
+                                        <button type="cancel" onclick="history.back()" class="btn btn btn-danger">Trở lại</button>
                                     </div> <!--end::Footer-->
                                 </div> <!--end::Input Group-->
                                
