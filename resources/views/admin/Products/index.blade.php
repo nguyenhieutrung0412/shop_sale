@@ -44,7 +44,7 @@
                                     <th>Giá bán</th>
                                     <th style="width: 90px">Tình trạng</th>
                                     <th>Ngày tạo</th>
-                                    <th style="width: 116px">action</th>
+                                    <th style="width: 135px">action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +66,7 @@
                                     <td >{{$value->description}}</td>
                                     <td data-label ="Giá sản phẩm">{{$value->price}}</td>
                                     @if ($value->active === 1)
-                                    <td data-label ="Tình trạng sản phẩm" style="color: #11d922;text-align: center">
+                                    <td data-label ="Tình trạng sản phẩm" style="color: #11d922;">
                                         
                                         <label class="switch">
                                         <input type="checkbox" class="active_checkbox" data-route="{{ route('admin.update.active') }}" data-flag="true" data-id="{{$value->id_new}}" checked>
@@ -74,7 +74,7 @@
                                       </label></td>
                                     
                                     @else
-                                    <td data-label ="Tình trạng sản phẩm" style="color: #e81526;text-align: center">
+                                    <td data-label ="Tình trạng sản phẩm" style="color: #e81526;">
                                         
                                         <label class="switch">
                                             <input type="checkbox"  class="active_checkbox" data-route="{{ route('admin.update.active') }}" data-flag="false" data-id="{{$value->id_new}}">

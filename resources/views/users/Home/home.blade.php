@@ -9,7 +9,7 @@
             
             @if ($value->active === 0)
             <a href="{{ route('detail', ['id'=>$value->id_new]) }}">
-                <div class="item {{$value->fix}}">
+                <div class="item {{$value->fix}} {{$value->fixmobile}}">
                     <div class="item-image">
                         <img src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Hình ảnh sản phẩm">
                     </div>
@@ -35,7 +35,7 @@
             
             @else
             <a href="{{ route('detail', ['id'=>$value->id_new]) }}">
-                <div class="item {{$value->fix}}">
+                <div class="item {{$value->fix}} {{$value->fixmobile}}">
                     <div class="item-image">
                         @if (count($value->images) !== 0 )
                             

@@ -30,6 +30,12 @@ class HomeController extends Controller
             {
                 $product[$i]['fix'] = 'fix';
             }
+             // xử lý thêm class fixmobile vào item
+             $product[$i]['fix'] = '';
+             if($flag % 2 == 0 )
+             {
+                 $product[$i]['fixmobile'] = 'fixmobile';
+             }
             // 
             $product[$i]['id_new'] = $this->handleRepo->id_encode($product[$i]['id']);
         
