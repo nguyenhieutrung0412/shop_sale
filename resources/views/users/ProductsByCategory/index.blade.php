@@ -1,11 +1,12 @@
 @extends('users.master')
 @section('content')
+
 <div class="container container-gobal">
     <div class="title">
         <h2>Sản phẩm đang bán</h2>
     </div>
     <div class="list-menu-items">
-        @if(count($data_product) < 1)
+        @if(count($products) < 1)
         <div class="loading">
             <div class="loader">
                 <div class="truckWrapper">
@@ -142,7 +143,7 @@
             <p>Sản phẩm đang đợi ra mắt</p>
         </div>
         @endif
-        @foreach ($data_product as $key => $value )
+        @foreach ($products as $key => $value )
             
             @if ($value->active === 0)
             <a href="{{ route('detail', ['id'=>$value->id_new]) }}">
@@ -203,7 +204,9 @@
       
        
     </div>
-    {{$data_product->links()}}
+    {{$products->links()}}
 </div>
+
+
 
 @endsection

@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\users\HomeController;
+use App\Http\Controllers\Users\HomeController;
 use App\Http\Controllers\Api\HomeController as ApiHome;
-use App\Http\Controllers\users\ProductDetailController;
-use App\Http\Controllers\users\LoginController;
+use App\Http\Controllers\Users\ProductDetailController;
+use App\Http\Controllers\Users\ProductsByCategoryController;
+use App\Http\Controllers\Users\LoginController;
 use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\Admin\CategoriesAdminController;
 use App\Http\Controllers\Admin\LoginAdminController;
@@ -23,10 +24,11 @@ use App\Http\Controllers\Admin\LoginAdminController;
 //Route users
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/detail/{id}',[ProductDetailController::class,'detail_product'])->name('detail');
+Route::get('/categories/{id}',[ProductsByCategoryController::class,'index'])->name('products.by.category');
 
 Route::post('/login',[LoginAdminController::class,'CheckLogin'])->name('login');
 Route::get('/logout',[LoginAdminController::class,'logout'])->name('logout');
-
+Route::get('/chinh-sach',[HomeController::class,'chinh_sach_index'])->name('chinh-sach');
 // admin
 Route::prefix('dashboard')->middleware('admin')->group(function(){
     // product

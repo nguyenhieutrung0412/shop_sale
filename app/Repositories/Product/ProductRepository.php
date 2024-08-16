@@ -16,7 +16,11 @@ class ProductRepository extends BaseRepository implements ProductInterface
  
      public function getProduct()
      {
-         return $this->model->get();
+         return $this->model->paginate(6);
+     }
+     public function getProductsByCategory($cate_id)
+     {
+         return $this->model->where("cate_id", $cate_id)->paginate(6);
      }
      public function find($id)
      {

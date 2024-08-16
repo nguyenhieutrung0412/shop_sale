@@ -23,6 +23,9 @@ let imgshow = document.querySelector('.product-info_imgbig img');
     })
 
     $(document).ready(function(){
+        $('#toggle').click(function() {
+            $('#nav').slideToggle();
+        });
         // Hiển thị form đăng nhập
         $(".login-btn").click(function(){
             $(".modal").toggle("fast","linear",function(){

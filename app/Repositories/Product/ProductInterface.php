@@ -7,4 +7,5 @@ use App\Repositories\Base\RepositoryInterface;
 interface ProductInterface
 {
     public function getProduct();
+    public function getProductsByCategory($cate_id);
 }

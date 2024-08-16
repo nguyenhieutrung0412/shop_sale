@@ -57,3 +57,44 @@
     font-weight: 900;
 }
 
+/*  */
+/* From Uiverse.io by kamehame-ha */ 
+.item-contact .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 13px;
+    gap: 15px;
+    background-color: #84adea;
+    outline: 3px #cbcbcbd1 solid;
+    outline-offset: -3px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 400ms;
+  }
+  
+  .item-contact .button .text {
+    color: white;
+    font-weight: 700;
+    font-size: 1em;
+    transition: 400ms;
+    margin-bottom:0;
+  }
+  
+  .item-contact .button svg path {
+    transition: 400ms;
+  }
+  
+  .item-contact .button:hover {
+    background-color: transparent;
+  }
+  
+  .item-contact .button:hover .text {
+    color: #181717;
+  }
+  
+  .item-contact .button:hover svg path {
+    fill: #181717;
+  }
+

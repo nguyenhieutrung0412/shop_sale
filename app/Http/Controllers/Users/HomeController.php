@@ -5,20 +5,34 @@ namespace App\Http\Controllers\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Product\ProductInterface;
+use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Handle\HandleInterface;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
     protected $productRepo;
+    protected $categoryRepo;
     protected $handleRepo;
 
-    public function __construct(ProductInterface $productRepo, HandleInterface $handleRepo) {
+    public function __construct(CategoryInterface $categoryRepo, ProductInterface $productRepo, HandleInterface $handleRepo) {
         $this->productRepo = $productRepo;
         $this->handleRepo = $handleRepo;
+        $this->categoryRepo = $categoryRepo;
     }
     public function index()
     {
+        //lấy dữ liệu categories cho header
+        $cate = $this->categoryRepo->getCategories();
+      
+        for($j = 0; $j < count($cate); $j++){
+            
+            $cate[$j]['id_new'] = $this->handleRepo->id_encode($cate[$j]['id']);
+          
+        }
+        
+
+        //end
         $product = $this->productRepo->getProduct();
         $count = count($product);
         $flag = 1;
@@ -31,11 +45,12 @@ class HomeController extends Controller
                 $product[$i]['fix'] = 'fix';
             }
              // xử lý thêm class fixmobile vào item
-             $product[$i]['fix'] = '';
+             $product[$i]['fixmobile'] = '';
              if($flag % 2 == 0 )
              {
                  $product[$i]['fixmobile'] = 'fixmobile';
              }
+             
             // 
             $product[$i]['id_new'] = $this->handleRepo->id_encode($product[$i]['id']);
         
@@ -53,7 +68,25 @@ class HomeController extends Controller
        
        
         // dd($product);
-        return view('users.Home.home')->with('data_product',$product);
+        return view('users.Home.home')->with('data_product',$product)
+                                      ->with('cate',$cate);
+    }
+    public function chinh_sach_index()
+    {
+        
+        //lấy dữ liệu categories cho header
+        $cate = $this->categoryRepo->getCategories();
+      
+        for($j = 0; $j < count($cate); $j++){
+            
+            $cate[$j]['id_new'] = $this->handleRepo->id_encode($cate[$j]['id']);
+          
+        }
+        
+
+        //end
+        // dd($product);
+        return view('users.chinhsach.chinhsach')->with('cate',$cate);
     }
    
 }

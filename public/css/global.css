@@ -40,13 +40,13 @@ a[href] {
 img{
     vertical-align: middle;
 }
-.container-gobal{
+/* .container-gobal{
     padding: 0 15%;
 }
 .container{
     width: 100%;
    display: inline-block;
-}
+} */
 .p-relative{
     position: relative;
     
@@ -80,4 +80,9 @@ img{
     margin-top: 5px;
     font-style: italic;
     margin-bottom: 15px;
+}
+.title{
+    text-align: center;
+    /* line-height: 0.5; */
+    padding: 14px 0px;
 }

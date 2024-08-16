@@ -46,17 +46,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $data)
+                                @foreach ($data as $item)
                                 <tr class="align-middle">
-                                    <td>{{$data->stt}}</td>
-                                    <td>{{$data->name}}</td>
+                                    <td>{{$item->stt}}</td>
+                                    <td>{{$item->name}}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="{{ route('admin.categories.edit', ['id'=>$data->id]) }}">
+                                        <a class="btn btn-info btn-sm" href="{{ route('admin.categories.edit', ['id'=>$item->id]) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm btn_event" data-id="{{$data->id_new}}" data-route="{{ route('admin.categories.delete') }}">
+                                        <a class="btn btn-danger btn-sm btn_event" data-id="{{$item->id_new}}" data-route="{{ route('admin.categories.delete') }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -71,7 +71,8 @@
                             </tbody>
                         </table>
                     </div> <!-- /.card-body -->
-                    <div class="card-footer clearfix">
+                    {{$data->links()}}
+                    {{-- <div class="card-footer clearfix">
                         <ul class="pagination pagination-sm m-0 float-end">
                             <li class="page-item"> <a class="page-link" href="#">«</a> </li>
                             <li class="page-item"> <a class="page-link" href="#">1</a> </li>
@@ -79,7 +80,7 @@
                             <li class="page-item"> <a class="page-link" href="#">3</a> </li>
                             <li class="page-item"> <a class="page-link" href="#">»</a> </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div> <!-- /.card -->
               
             </div> <!-- /.col -->

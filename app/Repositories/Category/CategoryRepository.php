@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Category;
 use App\Models\Categories;
+use App\Models\Product;
 use App\Http\Requests\Request;
 use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Base\BaseRepository;
@@ -15,6 +16,10 @@ class CategoryRepository extends BaseRepository implements CategoryInterface
      }
  
      public function getCategory()
+     {
+         return $this->model->paginate(6);
+     }
+     public function getCategories()
      {
          return $this->model->get();
      }
@@ -35,13 +40,16 @@ class CategoryRepository extends BaseRepository implements CategoryInterface
      public function delete($id)
      {
             $result = $this->find($id);
-            if ($result) {
+            $product = Product::where("cate_id",$id)->get();
+            if (count($product) > 0) {
+                return false;
+            }
+            else{
                 $result->delete();
 
                 return true;
             }
 
-            return false;
      }
 
 }

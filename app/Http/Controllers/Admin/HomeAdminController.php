@@ -77,6 +77,7 @@ class HomeAdminController extends Controller
             'price'=>$request->price,
             'description_most'=>$request->description_most,
             'description'=>$request->description,
+            
             'active'=>1,
             //xử lý ảnh 
             'images'=>$json_files,
@@ -150,13 +151,16 @@ class HomeAdminController extends Controller
             $request->images_uploaded = [];
         };
         $files_merge = array_merge($files,$request->images_uploaded);
+       
+     
+            $json_files = json_encode($files_merge);
         
         //chuyển đổi array to json
-        $json_files = json_encode($files_merge);
+   
         
 
         
-        //  dd($request->name);die;
+        //   dd($request->description_most);die;
         $attributes = [
             'id' => $id,
             'cate_id' => $request->category,
@@ -166,6 +170,7 @@ class HomeAdminController extends Controller
             'price' => $request->price,
             'images' => $json_files
         ];
+
       
         $update = $this->productRepo->update($id,$attributes);
         // dd($this->handleRepo->id_decode($request->id));die;

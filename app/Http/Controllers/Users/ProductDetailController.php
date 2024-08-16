@@ -5,6 +5,7 @@ namespace App\Http\Controllers\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Product\ProductInterface;
+use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Handle\HandleInterface;
 use Illuminate\Support\Str;
 
@@ -12,15 +13,26 @@ use Illuminate\Support\Str;
 class ProductDetailController extends Controller
 {
     protected $productRepo;
+    protected $categoryRepo;
     protected $handleRepo;
 
-    public function __construct(ProductInterface $productRepo, HandleInterface $handleRepo) {
+    public function __construct(CategoryInterface $categoryRepo, ProductInterface $productRepo, HandleInterface $handleRepo) {
         $this->productRepo = $productRepo;
         $this->handleRepo = $handleRepo;
+        $this->categoryRepo = $categoryRepo;
     }
 
     public function detail_product($id)
     {
+          //lấy dữ liệu categories cho header
+          $cate = $this->categoryRepo->getCategories();
+          
+        for($j = 0; $j < count($cate); $j++){
+            
+            $cate[$j]['id_new'] = $this->handleRepo->id_encode($cate[$j]['id']);
+          
+        }
+          //end
         //giải hóa id
         $id = $this->handleRepo->id_decode($id);
         //
@@ -31,6 +43,6 @@ class ProductDetailController extends Controller
         $product['images'] = json_decode($product['images']);
         $product['description'] = Str::of($product['description'])->toHtmlString();
         
-        return view('users.ProductDetail.detail')->with('product',$product);
+        return view('users.ProductDetail.detail')->with('product',$product)->with('cate',$cate);
     }
 }
