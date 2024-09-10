@@ -27,8 +27,43 @@
         updateActiveById(e);
       })
       //end xử lý tình trạng của sản phẩm
-
+      $('.discount-input').on("keyup",() => {
+        updatePriceAfterDiscount();
+       
+      })
     //   Function xử lý 
+    //xử lý tính giá sau khi nhập mã giảm
+    function updatePriceAfterDiscount(){
+       
+        discount =  $('.discount-input').val();
+        price = $('.price-input').val()
+        // console.log($data['id']);
+        if(discount === 0 || discount === '' )
+        {
+            price_after_discount = price;
+        }
+        else if(discount > 100 || discount < 0)
+        {
+            price_after_discount = price;
+        }
+        else{
+            price_of_discount = discount *price / 100;
+            price_after_discount = price - price_of_discount;
+        }
+        $('.price-after-discount').html(`
+            <span class="input-group-text" id="discount">Giá bán thực tế: </span> <input type="text" class="form-control 
+            "name="price_discount" value="`+ price_after_discount +`" readonly>`);
+       // console.log(price_after_discount);
+        // $('.price-after-discount').innerHTML = 
+        // `
+        // <span class="input-group-text" id="discount">Giá bán thực tế: </span> <input type="text" class="form-control "
+        //                                          name="price_discount" value="`+ price_after_discount +`">
+        // `;
+           
+
+        
+    }
+    //end xử lý tính giá sau khi nhập mã giảm
     //xử lý thay đổi tình trạng sản phẩm
     function updateActiveById(e){
         data = e.target.dataset;

@@ -7,5 +7,8 @@ use App\Repositories\Base\RepositoryInterface;
 interface HandleInterface
 {
     public function imageHandle($files_upload);
-    public function urlNormal($str);
+    public function price_after_discount($price,$discount);
+
+
+
 }

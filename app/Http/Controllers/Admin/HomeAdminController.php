@@ -32,9 +32,12 @@ class HomeAdminController extends Controller
         $data[$i]['id_new'] = $this->handleRepo->id_encode($data[$i]['id']); 
         //Chuyển đổi tiền tệ
         //lấy danh sách hình ảnh
-        $data[$i]['images'] = json_decode($data[$i]['images']);; 
+        $data[$i]['images'] = json_decode($data[$i]['images']); 
         // 
+       
+        $data[$i]['price_after_discount'] = $this->handleRepo->price_after_discount($data[$i]['price'],$data[$i]['discount']);
         $data[$i]['price'] = $this->handleRepo->currency_format($data[$i]['price']);
+        $data[$i]['price_after_discount'] = $this->handleRepo->currency_format($data[$i]['price_after_discount']);
         // Chuyển chuỗi thành html
         $data[$i]['description'] = Str::of($data[$i]['description'])->toHtmlString();
 
@@ -75,6 +78,7 @@ class HomeAdminController extends Controller
             'cate_id'=>$request->category,
             'name_product'=>$request->name_product,
             'price'=>$request->price,
+            'discount'=>$request->discount,
             'description_most'=>$request->description_most,
             'description'=>$request->description,
             
@@ -115,6 +119,7 @@ class HomeAdminController extends Controller
         $data['images'] = json_decode($data['images']); 
         
         $data['newid'] = $this->handleRepo->id_encode($id);
+        $data['price_of_discount'] = $data['discount'] * $data['price'] / 100;
        
         
        
@@ -168,6 +173,7 @@ class HomeAdminController extends Controller
             'description_most' => $request->description_most,
             'description' => $request->description,
             'price' => $request->price,
+            'discount' => $request->discount,
             'images' => $json_files
         ];
 

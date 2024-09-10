@@ -4,13 +4,15 @@
     float: left;
     border-bottom: 1px solid #8b8a8a;
     padding-bottom: 15px;
+    background-image: url("../images/backg.jpg");
+    background-attachment: fixed;
 }
 /* css container product-info left */
 .product-info .product-info_img{
-
+    padding-left: 12%;
     width: 48%;
     float: left;
-    margin: 10px 2% 10px 0;
+    margin: 30px 2% 10px 0;
 
 }
 .product-info .product-info_img .product-info_imgbig{
@@ -41,12 +43,35 @@
 .product-info .product-info_iteminfo{
     width: 48%;
     float: right;
-    margin: 10px 0;
+    margin: 70px 0;
     line-height: 1.8;
+
     
+}
+.product-info .product-info_iteminfo .item-name{
+    font-weight: bold;
+    font-size: 100px;
+    color: #009d11;
+    right: 0px;
+    width: 80%;
+    padding: 10px;
+}
+.product-info .product-info_iteminfo .item-description_most{
+    
+    right: 0px;
+    width: 80%;
+    /* border: 1px solid black; */
+    padding: 10px;
+ 
+}
+.product-info .product-info_iteminfo .item-price{
+    font-size: 40px;
+    padding: 10px;
 }
 /* css container description */
 .product-description{
+    background-image: url("../images/backg.jpg");
+    background-attachment: fixed;
     float: left;
     width: 100%;
     padding: 10px 0;
@@ -56,7 +81,11 @@
     font-size: 19px;
     font-weight: 900;
 }
-
+.product-description .description_item{
+    margin-left:4%;
+    margin-right: 4%;
+    line-height: 2;
+}
 /*  */
 /* From Uiverse.io by kamehame-ha */ 
 .item-contact .button {

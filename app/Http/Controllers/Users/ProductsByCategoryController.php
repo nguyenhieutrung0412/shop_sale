@@ -54,7 +54,12 @@ class ProductsByCategoryController extends Controller
         
             //chuyển chuỗi thành mảng 
             $products[$i]['images'] = json_decode($products[$i]['images']);
-            
+             //xử lý tiền sau khi giảm giá
+          
+             $products[$i]['price_after_discount'] = $this->handleRepo->price_after_discount($products[$i]['price'],$products[$i]['discount']);
+
+             //Chuyển đổi tiền tệ
+             $products[$i]['price_after_discount'] = $this->handleRepo->currency_format($products[$i]['price_after_discount']);
              //Chuyển đổi tiền tệ
              $products[$i]['price'] = $this->handleRepo->currency_format($products[$i]['price']);
             // Hiển thị mô tả ngắn gọn cho trang sản phẩm

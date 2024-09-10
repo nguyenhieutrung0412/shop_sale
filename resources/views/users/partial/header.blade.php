@@ -1,19 +1,10 @@
  {{-- header --}}
  <header>
+    
     <div class="global-header ">
-        @if(Auth::Check())
-        <div class="header-first">
-            <a href="{{ route('admin.product') }}" class="admin-btn">Admin</a>
-        </div>
-        @else
-        <div class="header-first">
-            <button class="login-btn">ĐĂNG NHẬP</button>
-        </div>
-        @endif
-        
-        <div class="header-second container-gobal">
+        <div class="header-second ">
             <div class="logo">
-               <a href="/"><img src="{{ asset('/images/logoo.png') }}" alt="logo"></a>
+               <a href="/"><img src="{{ asset('/images/logo5.png') }}" alt="logo"></a>
             </div>
             <div class="header-second_right">
                 <div id="toggle">
@@ -31,7 +22,7 @@
                            
                         </ul>
                     </li>
-                    <li><a href="/">Liên hệ</a></li>   
+                    <li><a href="/">Tin tức</a></li>   
                     <li><a href="/chinh-sach">Chính sách </a></li>
                 </ul>
             </div>
@@ -39,6 +30,11 @@
         <div class="header-third container-gobal">
            
         </div>
+    </div>
+    <div class="fix-header">
+        
+    </div>
+            
     </div>
 </header>
 {{-- end header --}}

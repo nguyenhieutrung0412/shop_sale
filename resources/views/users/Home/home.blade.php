@@ -1,8 +1,9 @@
 @extends('users.master')
 @section('content')
+
 <div class="container container-gobal">
     <div class="title">
-        <h2>Sản phẩm đang bán</h2>
+        <h2>SẢN PHẨM ĐANG BÁN</h2>
     </div>
     <div class="list-menu-items">
         @if(count($data_product) < 1)
@@ -148,22 +149,31 @@
             <a href="{{ route('detail', ['id'=>$value->id_new]) }}">
                 <div class="item {{$value->fix}} {{$value->fixmobile}}">
                     <div class="item-image">
-                        <img src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Hình ảnh sản phẩm">
+                    <a href="{{ route('detail', ['id'=>$value->id_new]) }}">
+                          <img src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Hình ảnh sản phẩm">
+                    </a>
                     </div>
                     <div class="item-name">
                         <h4>{{$value->name_product}}</h4>
                     </div>
-                    <div class="item-description">
+                    <!-- <div class="item-description">
                         <p>{{$value->description_most}}</p>
-                    </div>
+                    </div> -->
                     <div class="item-price">
-                        <h4>{{$value->price}}</h4>
+                        @if ($value->price_after_discount !== $value->price)
+                            <del>{{$value->price}}</del>
+                            <h4 style="color: red">{{$value->price_after_discount}}</h4>
+                        @else
+                    
+                            <h4>{{$value->price}}</h4>
+                        @endif
+                    
                     </div>
-                    <div class="item-btn">
+                     <div class="item-btn">
                         <button data-label="more" class="rainbow-hover">
-                            <a href="{{ route('detail', ['id'=>$value->id_new]) }}"><span class="sp">Xem thêm</span></a>
+                            <a href="{{ route('detail', ['id'=>$value->id_new]) }}"><span class="sp">xem thêm </span></a>
                         </button>
-                    </div>
+                    </div> 
                     <div class="attention">
                         <span>hết hàng</span>
                     </div>
@@ -175,25 +185,29 @@
                 <div class="item {{$value->fix}} {{$value->fixmobile}}">
                     <div class="item-image">
                         @if (count($value->images) !== 0 )
-                            
-                      
                         <img src="{{ asset('upload/images/'.$value->images[0]) }}" alt="Hình ảnh sản phẩm">
                         @endif
                     </div>
                     <div class="item-name">
-                        <h4>{{$value->name_product}}</h4>
+                        <h2>{{$value->name_product}}</h2>
                     </div>
-                    <div class="item-description">
+                    <!-- <div class="item-description">
                         <p>{{$value->description_most}}</p>
-                    </div>
+                    </div> -->
                     <div class="item-price">
-                        <h4>{{$value->price}}</h4>
+                        @if ($value->price_after_discount !== $value->price)
+                        <del>{{$value->price}}</del>
+                        <h4 style="color: red;padding-top:5px;font-size:18px">{{$value->price_after_discount}} <span class="discount_percent2_deal">{{$value->discount}}%</span></h4>
+                        @else
+                    
+                            <h4 style="font-size:18px">{{$value->price}}</h4>
+                        @endif
                     </div>
-                    <div class="item-btn">
+                     <div class="item-btn">
                         <button data-label="more" class="rainbow-hover">
                             <a href="{{ route('detail', ['id'=>$value->id_new]) }}"><span class="sp">Xem thêm</span></a>
                         </button>
-                    </div>
+                    </div> 
                 </div>
             </a>
             @endif

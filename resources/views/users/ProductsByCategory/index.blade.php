@@ -154,11 +154,17 @@
                     <div class="item-name">
                         <h4>{{$value->name_product}}</h4>
                     </div>
-                    <div class="item-description">
+                    <!-- <div class="item-description">
                         <p>{{$value->description_most}}</p>
-                    </div>
+                    </div> -->
                     <div class="item-price">
-                        <h4>{{$value->price}}</h4>
+                        @if ($value->price_after_discount !== $value->price)
+                        <del>{{$value->price}}</del>
+                        <h4 style="color: red;padding-top:5px;font-size:18px">{{$value->price_after_discount}}</h4>
+                        @else
+                    
+                            <h4 style="font-size:18px">{{$value->price}}</h4>
+                        @endif
                     </div>
                     <div class="item-btn">
                         <button data-label="more" class="rainbow-hover">
@@ -184,11 +190,17 @@
                     <div class="item-name">
                         <h4>{{$value->name_product}}</h4>
                     </div>
-                    <div class="item-description">
+                    <!-- <div class="item-description">
                         <p>{{$value->description_most}}</p>
-                    </div>
+                    </div> -->
                     <div class="item-price">
-                        <h4>{{$value->price}}</h4>
+                        @if ($value->price_after_discount !== $value->price)
+                        <del>{{$value->price}}</del>
+                        <h4 style="color: red;padding-top:5px;font-size:18px">{{$value->price_after_discount}}</h4>
+                        @else
+                    
+                            <h4 style="font-size:18px">{{$value->price}}</h4>
+                        @endif
                     </div>
                     <div class="item-btn">
                         <button data-label="more" class="rainbow-hover">

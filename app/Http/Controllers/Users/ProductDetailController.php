@@ -21,6 +21,32 @@ class ProductDetailController extends Controller
         $this->handleRepo = $handleRepo;
         $this->categoryRepo = $categoryRepo;
     }
+    // public function detail_product(Request $request)
+    // {   
+    //     //dd($request['data']['id']);
+    //     //lấy dữ liệu categories cho header
+    //           $cate = $this->categoryRepo->getCategories();
+              
+    //         for($j = 0; $j < count($cate); $j++){
+                
+    //             $cate[$j]['id_new'] = $this->handleRepo->id_encode($cate[$j]['id']);
+              
+    //         }
+    //         //end
+            
+    //         $id = $request['data']['id']; 
+    //         //giải hóa id
+    //         $id = $this->handleRepo->id_decode($id);
+    //         //
+    //         $product = $this->productRepo->find($id);
+    //         //Chuyển đổi tiền tệ
+    //         $product['price'] = $this->handleRepo->currency_format($product['price']);
+    //         // xử lí hiển thị hình ảnh từ json về dạng mảng
+    //         $product['images'] = json_decode($product['images']);
+    //         $product['description'] = Str::of($product['description'])->toHtmlString();
+
+    //     return view('users.ProductDetail.detail')->with('product',$product)->with('cate',$cate);
+    // }
 
     public function detail_product($id)
     {
@@ -33,12 +59,18 @@ class ProductDetailController extends Controller
           
         }
           //end
+        $arr_id = explode('-',$id);
+      
         //giải hóa id
-        $id = $this->handleRepo->id_decode($id);
+        $id = $this->handleRepo->id_decode(end($arr_id));
         //
         $product = $this->productRepo->find($id);
+         //xử lý tiền sau khi giảm giá
+          
+         $product['price_after_discount'] = $this->handleRepo->price_after_discount($product['price'],$product['discount']);
          //Chuyển đổi tiền tệ
          $product['price'] = $this->handleRepo->currency_format($product['price']);
+         $product['price_after_discount'] = $this->handleRepo->currency_format($product['price_after_discount']);
         // xử lí hiển thị hình ảnh từ json về dạng mảng
         $product['images'] = json_decode($product['images']);
         $product['description'] = Str::of($product['description'])->toHtmlString();

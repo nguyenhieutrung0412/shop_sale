@@ -101,7 +101,15 @@
                                         </div>
                                         <div class="input-group mb-3"> 
                                             <span class="input-group-text" id="price">Giá sản phẩm: </span> 
-                                            <input type="text" class="form-control" placeholder="500.000" name="price" value="{{$data->price}}"> 
+                                            <input type="text" class="form-control price-input" placeholder="500.000" name="price" value="{{$data->price}}"> 
+                                        </div>
+                                        <div class="input-group mb-3"> 
+                                            <span class="input-group-text" id="price">Phần trăm giảm giá: </span> 
+                                            <input type="text" class="form-control discount-input" placeholder="10.5" name="discount" value="{{$data->discount}}"> 
+                                        </div>
+                                        <div class="price-after-discount input-group mb-3"> 
+                                            <span class="input-group-text" id="price">Giá bán thực tế: </span> 
+                                            <input type="text" class="form-control " placeholder="500.000" name="price_of_discount" value="{{$data->price_of_discount}} " readonly> 
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Mổ tả nổi bật:</span>

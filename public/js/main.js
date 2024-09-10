@@ -38,6 +38,15 @@ let imgshow = document.querySelector('.product-info_imgbig img');
                 $(".modal").hide();
             });
         });
+        // contact
+        $(".menu-toggle").click(function () {
+            $(".menu-toggle").toggleClass("open");
+            $(".menu-line").toggleClass("open");
+            $(".menu-round").toggleClass("open");
+            
+        });
+        // 
+        
     });
 
  

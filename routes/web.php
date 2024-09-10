@@ -23,7 +23,8 @@ use App\Http\Controllers\Admin\LoginAdminController;
 
 //Route users
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/detail/{id}',[ProductDetailController::class,'detail_product'])->name('detail');
+ Route::get('/detail/{id}',[ProductDetailController::class,'detail_product'])->name('detail');
+// Route::post('/detail/{name}',[ProductDetailController::class,'detail_product'])->name('detail_post');
 Route::get('/categories/{id}',[ProductsByCategoryController::class,'index'])->name('products.by.category');
 
 Route::post('/login',[LoginAdminController::class,'CheckLogin'])->name('login');

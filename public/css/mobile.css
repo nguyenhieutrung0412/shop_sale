@@ -102,6 +102,7 @@
         margin: 10px 0;
     }
     .product-info .product-info_img .product-info_imgbig img{
+        padding-left: 1%;
         width: 413px;
         height: 413px;
     }
@@ -110,3 +111,4 @@
        
     }
 }
+     

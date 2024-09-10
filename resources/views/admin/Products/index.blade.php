@@ -41,6 +41,8 @@
                                     <th style="">Tên</th>
                                     <th>Mô tả nổi bật</th>
                                     <th>Mô tả</th>
+                                    <th>Giá sản phẩm</th>
+                                    <th>Phần trăm giảm</th>
                                     <th>Giá bán</th>
                                     <th style="width: 90px">Tình trạng</th>
                                     <th>Ngày tạo</th>
@@ -65,6 +67,8 @@
                                     <td >{{$value->description_most}}</td>
                                     <td >{{$value->description}}</td>
                                     <td data-label ="Giá sản phẩm">{{$value->price}}</td>
+                                    <td data-label ="Phần trăm giảm">{{$value->discount}}</td>
+                                    <td data-label ="Giá bán">{{$value->price_after_discount}}</td>
                                     @if ($value->active === 1)
                                     <td data-label ="Tình trạng sản phẩm" style="color: #11d922;">
                                         
